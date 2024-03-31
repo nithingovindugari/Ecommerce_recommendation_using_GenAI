@@ -1,9 +1,11 @@
 
 # E-commerce Product Recommendation System with NLP and RAG 
 
-This project is an end-to-end e-commerce product recommendation system that utilizes the power of natural language processing (NLP) , RAG Techniques,  machine learning to provide personalized product recommendations to users. The system is built using Python and leverages various libraries and frameworks such as Streamlit, Pandas, Seaborn, Matplotlib, and Langchain.
+This project is an end-to-end e-commerce product recommendation system that utilizes the power of natural language processing (NLP) , RAG Techniques,  machine learning to provide personalized product recommendations to users. The system is built using Python and leverages various libraries and frameworks such as Streamlit, Pandas, Seaborn, Matplotlib, and Langchain. Fundamental different from traditional recommendation systems, this project uses RAG techniques to generate recommendations based on user input and preference rather than collaborative filtering or content-based filtering. The system also understands user queries and provides relevant product suggestions using NLP techniques. The front-end of the system is built using Streamlit, allowing users to easily interact with the recommendation system through an intuitive user interface and options 
+are not limited to the dataset predefined categories and brands, users can input their own preferences such as product department, category, brand, and maximum price range, and the system generates personalized product recommendations based on their input understand semantic meaning of the user input and provide relevant product suggestions. 
 
 ## Features
+
 - **Data Analysis:** The system performs comprehensive data analysis on the e-commerce dataset, including visualizations of price distribution across top categories and discount percentage distribution.
 - **Product Recommendation:** Users can input their preferences, such as product department, category, brand, and maximum price range, and the system generates personalized product recommendations based on their input.
 - **NLP-powered Search:** The system utilizes NLP techniques to understand user queries and provide relevant product suggestions.
@@ -87,9 +89,6 @@ The project relies on the following major dependencies:
 
 For a complete list of dependencies, please refer to the `requirements.txt` file.
 
-# Sample Output
-
-![Alt text](image.png)
 
 ## Future Enhancements
 
