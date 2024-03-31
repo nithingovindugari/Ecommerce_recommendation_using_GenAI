@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 import streamlit as st
-import pickle
 from langchain.chains import RetrievalQA, LLMChain
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import DataFrameLoader
@@ -37,29 +36,28 @@ def process_data(refined_df):
 
     return vectorstore
 
-def save_vectorstore(vectorstore, file_path):
+def save_vectorstore(vectorstore, directory):
     """
-    Save the vector store to a file.
+    Save the vector store to a directory.
     
     Args:
         vectorstore (FAISS): Vector store to be saved.
-        file_path (str): Path to save the vector store file.
+        directory (str): Directory to save the vector store.
     """
-    with open(file_path, 'wb') as file:
-        pickle.dump(vectorstore, file)
+    vectorstore.save_local(directory)
 
-def load_vectorstore(file_path):
+def load_vectorstore(directory, embeddings):
     """
-    Load the vector store from a file.
+    Load the vector store from a directory.
     
     Args:
-        file_path (str): Path to the vector store file.
+        directory (str): Directory containing the saved vector store.
+        embeddings (OpenAIEmbeddings): Embeddings object.
         
     Returns:
         vectorstore (FAISS): Loaded vector store.
     """
-    with open(file_path, 'rb') as file:
-        vectorstore = pickle.load(file)
+    vectorstore = FAISS.load_local(directory, embeddings, allow_dangerous_deserialization = True  )
     return vectorstore
 
 def display_product_recommendation(refined_df):
@@ -71,13 +69,15 @@ def display_product_recommendation(refined_df):
     """
     st.header("Product Recommendation")
 
-    vectorstore_file = 'vectorstore.pkl'
+    vectorstore_dir = 'vectorstore'
 
-    if os.path.exists(vectorstore_file):
-        vectorstore = load_vectorstore(vectorstore_file)
+    embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
+
+    if os.path.exists(vectorstore_dir):
+        vectorstore = load_vectorstore(vectorstore_dir, embeddings)
     else:
         vectorstore = process_data(refined_df)
-        save_vectorstore(vectorstore, vectorstore_file)
+        save_vectorstore(vectorstore, vectorstore_dir)
 
     manual_template = """
     Kindly suggest three similar products based on the description I have provided below:
