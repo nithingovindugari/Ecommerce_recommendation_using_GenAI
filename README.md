@@ -1,5 +1,5 @@
 
-# E-commerce Product Recommendation System with NLP and RAG 
+# E-commerce Product Recommendation System with Gen AI
 
 This project is an end-to-end e-commerce product recommendation system that utilizes the power of natural language processing (NLP) , RAG Techniques,  machine learning to provide personalized product recommendations to users. The system is built using Python and leverages various libraries and frameworks such as Streamlit, Pandas, Seaborn, Matplotlib, and Langchain. Fundamental different from traditional recommendation systems, this project uses RAG techniques to generate recommendations based on user input and preference rather than collaborative filtering or content-based filtering. The system also understands user queries and provides relevant product suggestions using NLP techniques. The front-end of the system is built using Streamlit, allowing users to easily interact with the recommendation system through an intuitive user interface and options 
 are not limited to the dataset predefined categories and brands, users can input their own preferences such as product department, category, brand, and maximum price range, and the system generates personalized product recommendations based on their input understand semantic meaning of the user input and provide relevant product suggestions. 
